@@ -1,6 +1,13 @@
 # analyseDeDonnee
 Mini projet du cours 8PRO408
 
+## Auteurs
+
+- SHEE15060600, Shepherd, Elliot
+- ROBO10050700, Robin, Olivier
+- SEGO27120400, Séguin, Olivier
+
+
 ## Installation des prérequis
 Avant tout il est recommandé d'utiliser un environnement virtuel pour faire tourner le projet.
 Pour se faire exécuter la commande : python -m venv scienceDonneeEnv
