@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
-from includes.loadGraph import filmSerie, genres, paysProducteur
+from includes.loadGraph import filmSerie, genres, paysProducteur, evolutionFilmSeries
 
 @st.cache_data
 def chargerDonnee():
@@ -24,7 +24,7 @@ def nettoyage(df : pd.DataFrame):
     return df
 
 def loadPage():
-
+    """Permet de charger la page streamlit"""
     st.set_page_config(
         page_title="Analyse Netflix",
         layout="wide"
@@ -37,7 +37,7 @@ def loadPage():
     filmSerie(df)
     genres(df)
     paysProducteur(df)
-
+    evolutionFilmSeries(df)
 
 
 if __name__ == "__main__":

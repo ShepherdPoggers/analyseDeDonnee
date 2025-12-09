@@ -45,21 +45,72 @@ def genres(df : pd.DataFrame):
 
     st.plotly_chart(fig, use_container_width=True)
     
-def paysProducteur(df : pd.DataFrame):
+def paysProducteur(df: pd.DataFrame):
     """Permet l'affichage du top 20 pays producteurs"""
-    countries = df['country'].str.split(", ", expand=True).stack()
+    
+    # Séparer les pays multiples
+    countries = df['country'].dropna().str.split(", ", expand=True).stack()
+
+    # Top 20
     country_counts = countries.value_counts().head(20).reset_index()
-    country_counts.columns = ["Pays", "Nombre de productions"]
+    country_counts.columns = ["country", "count"]   # noms uniformes
+
+    # Bar chart
     fig = px.bar(
         country_counts,
-        x = "Pays",
-        y = "Nombre de productions",
-        title = "Top 20 pays producteurs",
-        text = "Nombre de productions"
+        x="country",
+        y="count",
+        title="Top 20 pays producteurs",
+        text="count"
     )
     fig.update_layout(
         xaxis_tickangle=-45
     )
 
-    
+    # Carte choroplèthe interactive
+    fig2 = px.choropleth(
+        country_counts,
+        locations="country",         # noms des pays
+        locationmode="country names",
+        color="count",
+        hover_name="country",
+        color_continuous_scale="Viridis",
+        title="Top 20 des pays producteurs (Carte interactive)"
+    )
+
+    # Affichage Streamlit
     st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig2, use_container_width=True)
+    
+def evolutionFilmSeries(df: pd.DataFrame):
+    """Cette fonction permet l'affichage du line chart du nombre de films et séries sortis par année"""
+
+    # Agrégation
+    dfYearType = (
+        df.groupby(["release_year", "type"])["show_id"]
+        .count()
+        .reset_index()
+    )
+
+    # Line chart interactif
+    fig = px.line(
+        dfYearType,
+        x="release_year",
+        y="show_id",
+        color="type",
+        markers=True,
+        title="Films et Séries sortis par année",
+        labels={
+            "release_year": "Année",
+            "show_id": "Nombre de titres",
+            "type": "Type"
+        }
+    )
+
+    fig.update_layout(
+        hovermode="x unified"
+    )
+    
+    # Affichage Streamlit
+    st.plotly_chart(fig, use_container_width=True)
+
