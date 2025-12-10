@@ -114,3 +114,24 @@ def evolutionFilmSeries(df: pd.DataFrame):
     # Affichage Streamlit
     st.plotly_chart(fig, use_container_width=True)
 
+def boxPlot(df : pd.DataFrame):
+    """Peremt de charger un boxplot"""
+    #4.7 — Analyse de la durée des films
+
+
+    # Extraire uniquement les films depuis le dataset complet
+    movies = df[df["type"] == "Movie"].copy()
+
+    # Conversion de la colonne 'duration' en nombre de minutes
+    # Exemple : "90 min" → 90
+    movies["duration_min"] = movies["duration"].str.extract(r"(\d+)").astype(float)
+
+    # Création du boxplot interactif avec Plotly
+    fig = px.box(
+        movies,
+        y="duration_min",        # Axe Y : durée en minutes
+        points="all",            # Affiche tous les points individuels pour visualiser les outliers
+        title="Distribution des durées des films sur Netflix",
+        labels={"duration_min": "Durée en minutes"}  # Renommage de l'axe Y
+    )
+    st.plotly_chart(fig, use_container_width=True)

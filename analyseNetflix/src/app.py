@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
-from includes.loadGraph import filmSerie, genres, paysProducteur, evolutionFilmSeries
+from includes.loadGraph import filmSerie, genres, paysProducteur, evolutionFilmSeries, boxPlot
 
 @st.cache_data
 def chargerDonnee():
@@ -38,6 +38,7 @@ def loadPage():
     genres(df)
     paysProducteur(df)
     evolutionFilmSeries(df)
+    boxPlot(df)
 
 
 if __name__ == "__main__":
