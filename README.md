@@ -14,3 +14,6 @@ Pour se faire exécuter la commande : python -m venv scienceDonneeEnv
 Il faut par la suite activer l'environnement avec scienceDonneeEnv/Scripts/activate
 
 Par la suite on peut installer les prérequis avec la commande pip install -r requirements.txt
+
+## Ouverture application streamlit
+Pour ouvrir l'application streamlit, il faut executer la commande : streamlit run app.py
