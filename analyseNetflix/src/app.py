@@ -6,7 +6,7 @@ from includes.loadGraph import filmSerie, genres, paysProducteur, evolutionFilmS
 @st.cache_data
 def chargerDonnee():
     """La fonction chargerDonnee permmet de charger le dataSet avec pandas"""
-    df = pd.read_csv("data/netflix_titles.csv")
+    df = pd.read_csv("analyseNetflix/data/netflix_titles.csv")
     df = nettoyage(df)
     return df
     
