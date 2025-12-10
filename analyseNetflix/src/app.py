@@ -38,7 +38,6 @@ def loadPage():
     genres(df)
     paysProducteur(df)
     evolutionFilmSeries(df)
-    boxPlot(df)
 
 
 if __name__ == "__main__":
