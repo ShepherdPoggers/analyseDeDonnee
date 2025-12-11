@@ -17,4 +17,4 @@ Par la suite on peut installer les prérequis avec la commande : `pip install -r
 
 ## Ouverture application streamlit
 - Pour ouvrir l'application streamlit en local, il faut executer la commande : `streamlit run analyseNetflix/src/app.py` depuis la racine.
-- Pour ouvrir l'application streamlit depuis l'hebergeur il faut ouvrir l'hyper line https://analysededonnee-srlqdezerabnqng8dbz93k.streamlit.app/
+- Pour ouvrir l'application streamlit depuis l'hebergeur il faut ouvrir l'hyper lien https://analysededonnee-srlqdezerabnqng8dbz93k.streamlit.app/
